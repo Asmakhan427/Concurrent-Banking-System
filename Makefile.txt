@@ -1,0 +1,15 @@
+CC     = gcc
+CFLAGS = -Wall -Wextra -g -pthread
+SRCS   = main.c accounts.c scheduling.c sync.c banker.c ipc.c memory.c vip_preempt.c
+TARGET = banking_system
+
+all:
+	$(CC) $(CFLAGS) -o $(TARGET) $(SRCS)
+
+clean:
+	rm -f $(TARGET)
+
+run: all
+	./$(TARGET)
+
+.PHONY: all clean run
