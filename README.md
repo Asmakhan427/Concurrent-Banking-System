@@ -66,6 +66,4 @@ A complete multi-threaded banking simulation that demonstrates **6 core Operatin
 - VIP preempts immediately (higher priority)
 - Regular resumes after VIP completes
 
----
 
-## 📊 Sample Output
