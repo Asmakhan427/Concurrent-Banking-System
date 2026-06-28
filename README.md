@@ -1,69 +1,141 @@
-# 🏦 Concurrent Banking System - Operating Systems Project
+# Concurrent Banking System
 
-![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-![Pthread](https://img.shields.io/badge/Pthreads-0078D6?style=for-the-badge&logo=linux&logoColor=white)
+## Overview
 
-## 📌 Project Overview
-
-A complete multi-threaded banking simulation that demonstrates **6 core Operating System concepts** working together in a real-world scenario. This project was developed for **CL2006 – Operating System Lab (Spring 2026)**.
-
-### 🎯 Objectives
-
-- Implement multithreading with different scheduling algorithms
-- Demonstrate synchronization using mutex locks and semaphores
-- Apply Banker's Algorithm for deadlock avoidance
-- Show IPC using message queues and pipes
-- Compare FIFO vs LRU page replacement algorithms
-- Demonstrate priority-based preemption
+The **Concurrent Banking System** is a multi-threaded banking simulation developed in **C** for the **Operating Systems Lab**. The project demonstrates the practical implementation of fundamental operating system concepts, including multithreading, synchronization, deadlock avoidance, inter-process communication (IPC), memory management, and process scheduling in a realistic banking environment.
 
 ---
 
-## 👥 Customer Types
+## Features
 
-| Customer Type | Priority | Description |
-|---------------|----------|-------------|
-| Regular | 1 | Performs deposits/withdrawals |
-| Premium | 3 | Higher scheduling priority |
-| Loan Applicant | 2 | Banker's Algorithm verification |
-| Corporate | 4 | Spawns 50 payroll threads |
-| VIP | 5 | Highest priority with preemption |
+* Multi-threaded customer transaction processing
+* Multiple CPU scheduling algorithms
+* Synchronization using mutexes and semaphores
+* Deadlock avoidance using Banker's Algorithm
 
 ---
 
-## 🛠️ OS Concepts Implemented
+## Technologies Used
 
-### 1️⃣ Threading & Scheduling
-- **FCFS** (First Come First Serve) - Non-preemptive, arrival order
-- **Priority Scheduling** - VIP(5) > Corporate(4) > Premium(3) > Loan(2) > Regular(1)
-- **Round Robin** - Time quantum = 2ms
-- **Output:** Gantt charts + Waiting/Turnaround/Response times
+* C Programming
+* POSIX Threads (Pthreads)
+* Linux
+* System V Message Queues
+* Pipes
+* Mutex Locks
+* Semaphores
 
-### 2️⃣ Synchronization
-- **Mutex Locks** - Protect shared account balances (critical sections)
-- **Semaphores** - Limit concurrent deposits to max 2
-- **Race Condition Prevention** - Demonstrated with/without mutex
+---
 
-### 3️⃣ Deadlock Handling (Banker's Algorithm)
-- Safety algorithm checks if loan request keeps system safe
-- Safe sequence identification
-- Automatic rollback on unsafe state
-- **Test cases:** Safe grant ✅ | Unsafe denial ❌
+## Core Concepts Implemented
 
-### 4️⃣ IPC (Inter-Process Communication)
-- **Message Queues** (System V) - Producer-consumer pattern
-- **Pipes** - Alternative communication method
-- Customer processes send requests → Bank server processes replies
+### Thread Scheduling
 
-### 5️⃣ Memory Management
-- **FIFO** (First-In-First-Out) page replacement
-- **LRU** (Least Recently Used) page replacement
-- Page fault and hit ratio comparison
-- Each customer has simulated memory footprint
+The system supports multiple CPU scheduling algorithms, including **First Come First Serve (FCFS)**, **Priority Scheduling**, and **Round Robin**, to execute customer requests efficiently.
 
-### 6️⃣ Priority Preemption
-- VIP customer arrives during Regular customer execution
-- VIP preempts immediately (higher priority)
-- Regular resumes after VIP completes
+<img width="814" height="526" alt="image" src="https://github.com/user-attachments/assets/acc2faeb-ce2f-47df-8dc8-ca5880154fcd" />
 
+
+---
+
+### Synchronization
+
+Shared bank account data is protected using **mutex locks**, while **semaphores** regulate concurrent access to critical banking operations, preventing race conditions.
+
+<img width="950" height="520" alt="image" src="https://github.com/user-attachments/assets/e75edc07-171b-40e5-9f1b-33866d62b12b" />
+
+
+---
+
+### Deadlock Avoidance
+
+The **Banker's Algorithm** verifies whether loan requests maintain a safe system state before allocating resources, preventing deadlocks.
+
+<img width="874" height="334" alt="image" src="https://github.com/user-attachments/assets/21977026-f504-47ec-a3ff-b9b141f18841" />
+
+
+---
+
+### Inter-Process Communication (IPC)
+
+Customer requests are exchanged between processes using **System V Message Queues** and **Pipes**, demonstrating communication between independent processes.
+
+<img width="819" height="524" alt="image" src="https://github.com/user-attachments/assets/c0e2d09e-d029-4a28-afd1-72b6ca4e01e9" />
+
+
+---
+
+### Memory Management
+
+The project simulates **FIFO** and **Least Recently Used (LRU)** page replacement algorithms and compares their page fault performance.
+
+<img width="635" height="523" alt="image" src="https://github.com/user-attachments/assets/69d6dc0a-dd76-437a-ac18-bf724985988e" />
+
+
+---
+
+### Priority Preemption
+
+High-priority customers can preempt currently executing lower-priority processes, demonstrating priority-based scheduling behavior.
+
+<img width="874" height="436" alt="image" src="https://github.com/user-attachments/assets/822ce3f5-d997-4fc4-9059-9ae94e6b0cf4" />
+
+
+---
+
+## Project Structure
+
+```text
+Concurrent-Banking-System/
+│
+├── src/
+├── include/
+├── screenshots/
+├── Makefile
+├── README.md
+└── bank_simulation.c
+```
+
+---
+
+## How to Run
+
+1. Clone the repository.
+
+```bash
+git clone https://github.com/Asmakhan427/Concurrent-Banking-System.git
+```
+
+2. Navigate to the project directory.
+
+```bash
+cd Concurrent-Banking-System
+```
+
+3. Compile the program.
+
+```bash
+gcc *.c -o banking_system -lpthread
+```
+
+4. Run the executable.
+
+```bash
+./banking_system
+```
+
+---
+
+## Learning Outcomes
+
+This project strengthened my understanding of:
+
+* Multithreading with POSIX Threads
+* CPU Scheduling Algorithms
+* Process Synchronization
+* Deadlock Avoidance
+* Inter-Process Communication
+* Memory Management
+* Concurrent Programming
+* Operating System Design
 
